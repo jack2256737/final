@@ -32,13 +32,7 @@ public class MainActivity1 extends AppCompatActivity {
                 startActivity(intent_toPage2);
             }
         });
-        btn_2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                intent_toPage2.putExtra("URL_key",2);
-                startActivity(intent_toPage2);
-            }
-        });
+
         btn_3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
