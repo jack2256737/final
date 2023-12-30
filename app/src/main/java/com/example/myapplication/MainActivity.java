@@ -17,7 +17,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         btn_subject=findViewById(R.id.btn_subject);
-
         Intent intent_toPage1 = new Intent(this,MainActivity1.class);
 
 
