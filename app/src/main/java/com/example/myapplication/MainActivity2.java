@@ -36,10 +36,10 @@ public class MainActivity2 extends AppCompatActivity {
     }
 
     private Button btn_previous,btn_next;
-    private TextView tv_num,tv_question,tv_item;
+    private TextView tv_num,tv_question;
     private RadioGroup rg;
     private RadioButton rb_A,rb_B,rb_C,rb_D;
-    int num=0,point=0,answer=0;
+    int num=0,point=0,answer=0,selectedAnswer=0;
     Data data;
 
 
@@ -52,7 +52,6 @@ public class MainActivity2 extends AppCompatActivity {
         btn_next=findViewById(R.id.btn_next);
         tv_num=findViewById(R.id.tv_num);
         tv_question=findViewById(R.id.tv_question);
-        tv_item=findViewById(R.id.tv_item);
         rg=findViewById(R.id.radioGroup);
         rb_A=findViewById(R.id.rb_A);
         rb_B=findViewById(R.id.rb_B);
@@ -74,35 +73,27 @@ public class MainActivity2 extends AppCompatActivity {
         switch (getURL){
             case 1: //如果按下第一個Button，則將題庫1的JSON檔網址給URL
                 URL=URL_01;
-                tv_item.setText("工作項目01");
                 break;
             case 2: //如果按下第二個Button，
                 URL=URL_02;
-                tv_item.setText("工作項目02");
                 break;
             case 3: //如果按下第三個Button，則將題庫4的JSON檔網址給URL
                 URL=URL_03;
-                tv_item.setText("工作項目03");
                 break;
             case 4:
                 URL=URL_04;
-                tv_item.setText("工作項目04");
                 break;
             case 5:
                 URL=URL_05;
-                tv_item.setText("工作項目05");
                 break;
             case 6:
                 URL=URL_06;
-                tv_item.setText("工作項目06");
                 break;
             case 7:
                 URL=URL_07;
-                tv_item.setText("工作項目07");
                 break;
             case 8:
                 URL=URL_08;
-                tv_item.setText("工作項目08");
                 break;
         }
 
@@ -140,11 +131,6 @@ public class MainActivity2 extends AppCompatActivity {
 
         btn_previous.setOnClickListener(view -> {
             rg.clearCheck();
-            rb_A.setBackgroundColor(Color.rgb(255,255,255));
-            rb_B.setBackgroundColor(Color.rgb(255,255,255));
-            rb_C.setBackgroundColor(Color.rgb(255,255,255));
-            rb_D.setBackgroundColor(Color.rgb(255,255,255));
-
             if(num==0){
                 Toast.makeText(MainActivity2.this,"已經在第一題了",Toast.LENGTH_SHORT).show();
             }else{
@@ -165,14 +151,11 @@ public class MainActivity2 extends AppCompatActivity {
 
         btn_next.setOnClickListener(view -> {
             rg.clearCheck();
-            rb_A.setBackgroundColor(Color.rgb(255,255,255));
-            rb_B.setBackgroundColor(Color.rgb(255,255,255));
-            rb_C.setBackgroundColor(Color.rgb(255,255,255));
-            rb_D.setBackgroundColor(Color.rgb(255,255,255));
+
             if(num==(data.questions.length-1)){
                 Toast.makeText(this,"最後一題",Toast.LENGTH_SHORT).show();
                 Intent intent_toPage3 = new Intent(this, MainActivity3.class);
-                intent_toPage3.putExtra("final_score", point); // 将分数添加到Intent中
+                intent_toPage3.putExtra("final_score", point);
                 startActivity(intent_toPage3);
             }else{
                 num++;
@@ -192,12 +175,7 @@ public class MainActivity2 extends AppCompatActivity {
         rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
             @Override
             public void onCheckedChanged(RadioGroup group, int i) {
-                rb_A.setBackgroundColor(Color.rgb(255,255,255));
-                rb_B.setBackgroundColor(Color.rgb(255,255,255));
-                rb_C.setBackgroundColor(Color.rgb(255,255,255));
-                rb_D.setBackgroundColor(Color.rgb(255,255,255));
 
-                int selectedAnswer = 0;
                 if (i == R.id.rb_A) {
                     selectedAnswer = 1;
                 } else if (i == R.id.rb_B) {
