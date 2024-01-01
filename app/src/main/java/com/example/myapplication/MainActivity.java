@@ -20,15 +20,11 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent_toPage1 = new Intent(this,MainActivity1.class);
 
-
         btn_subject.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(intent_toPage1);
             }
         });
-
-
-
     }
 }
